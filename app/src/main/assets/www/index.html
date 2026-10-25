@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator toplotnih izgub, rosišča in ogrevanja - Verzija 10.2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="title-wrap">
+      <h1>Kalkulator toplotnih izgub, rosišča in ogrevanja</h1>
+      <span class="ver-badge">Verzija 10.2</span>
+    </div>
+    <p>Inženirski izračun ovoja stavbe, točke rosišča, toplotne črpalke, sončne elektrarne in stroškov ogrevanja</p>
+  </div>
+  <div class="header-actions">
+    <button class="btn-outline" onclick="loadSampleData()">🏠 Vzorec hiše (V04)</button>
+    <button class="btn-outline" onclick="toggleDarkMode()" id="darkBtn">🌙 Temni način</button>
+    <button class="btn-outline" onclick="saveScenarioA()">📌 Scenarij A</button>
+    <button class="btn-outline" onclick="exportJSON()">💾 Shrani (.json)</button>
+    <button class="btn-outline" onclick="document.getElementById('importFile').click()">📂 Naloži</button>
+    <input type="file" id="importFile" style="display:none" accept=".json" onchange="importJSON(event)">
+    <button class="btn-outline" onclick="resetDefault()">🔄 Ponastavi</button>
+    <button class="btn-primary" onclick="printFullReport()">📄 Celotno poročilo / PDF</button>
+  </div>
+</header>
+
+<div id="scenarioBarWrap" style="padding:0 16px;"></div>
+
+<div class="container">
+  <div>
+    <div class="card">
+      <div class="card-title">
+        <span>🌡️ Klimatski in robni pogoji (temperatura in vlaga za točko rosišča)</span>
+        <span id="deltaTBadge" class="badge badge-ok">ΔT = 34.0 K</span>
+      </div>
+      <div class="boundary-grid">
+        <div class="field">
+          <label>Slovensko mesto / cona</label>
+          <select id="cityPresetSelect" onchange="applyCityPreset()">
+            <option value="-13">Murska Sobota / Prekmurje (-13 °C)</option>
+            <option value="-13">Maribor / Podravska (-13 °C)</option>
+            <option value="-13">Ljubljana / Osrednja SLO (-13 °C)</option>
+            <option value="-13">Celje / Savinjska (-13 °C)</option>
+            <option value="-15">Kranj / Gorenjska (-15 °C)</option>
+            <option value="-18">Kranjska Gora / Alp. svet (-18 °C)</option>
+            <option value="-14">Novo mesto / Dolenjska (-14 °C)</option>
+            <option value="-9">Nova Gorica / Goriška (-9 °C)</option>
+            <option value="-5">Koper / Obala (-5 °C)</option>
+            <option value="-15">Postojna / Notranjska (-15 °C)</option>
+            <option value="custom">Ročni vnos temperature</option>
+          </select>
+        </div>
+        <div class="field"><label>Notranja temp. Ti (°C)</label><input type="number" id="tiInput" step="0.5" value="21" onchange="updateBoundary()"></div>
+        <div class="field"><label>Zunanja temp. Te (°C)</label><input type="number" id="teInput" step="0.5" value="-13" onchange="updateBoundary()"></div>
+        <div class="field"><label>Notranja vlaga φi (%)</label><input type="number" id="phiIInput" min="10" max="95" step="5" value="50" onchange="updateBoundary()"></div>
+        <div class="field"><label>Zunanja vlaga φe (%)</label><input type="number" id="phiEInput" min="10" max="100" step="5" value="80" onchange="updateBoundary()"></div>
+        <div class="field"><label>Ogrevana površina (m²)</label><input type="number" id="heatedAreaInput" min="10" step="5" value="180" onchange="updateBoundary()"></div>
+        <div class="field"><label>Ure polne obrem. (h/leto)</label><input type="number" id="hoursInput" min="500" max="4000" step="25" value="1900" onchange="updateBoundary()"></div>
+      </div>
+    </div>
+
+    <div class="tabs" id="categoryTabs"></div>
+    <div id="categoryContent"></div>
+  </div>
+
+  <div class="sidebar">
+    <div class="card">
+      <div class="card-title">
+        <span>📊 Skupni rezultati in energetska izkaznica</span>
+        <span id="energyClassBadge" class="badge badge-ok">Razred B1</span>
+      </div>
+
+      <div class="epc-box">
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+          <span style="color:var(--muted); font-weight:700;">STANDARD HIŠE:</span>
+          <strong id="houseStandardTitle" style="color:var(--primary-dark); font-size:0.84rem;">Skoraj ničenergijska hiša</strong>
+        </div>
+        <div class="epc-scale" id="epcScaleBar"></div>
+        <div id="houseStandardSub" style="font-size:0.74rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:4px; margin-top:6px;"></div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-card highlight">
+          <div class="lbl">PROJEKTNE IZGUBE HIŠE</div>
+          <div class="val" id="totalLossKw">0.00 kW</div>
+          <div class="sub" id="totalLossW">0 W (brez STV)</div>
+        </div>
+        <div class="stat-card">
+          <div class="lbl">SKUPNA LETNA TOPLOTA</div>
+          <div class="val" id="annualKwh">0 kWh</div>
+          <div class="sub" id="specificKwh">Ogrevanje + STV</div>
+        </div>
+      </div>
+
+      <div style="font-size:0.76rem; font-weight:700; margin-bottom:8px; color:var(--muted); text-transform:uppercase; letter-spacing:0.03em;">RAZČLENITEV TOPLOTNIH IZGUB PO SKUPINAH:</div>
+      <div id="groupBreakdown"></div>
+      <hr style="border:none; border-top:1px solid var(--border); margin:12px 0;">
+      <div style="font-size:0.76rem; font-weight:700; color:var(--muted); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.03em;">💶 LETNI STROŠEK (OGREVANJE + STV):</div>
+      <table class="cost-table" id="costTable"></table>
+      <div id="dhwModeBadgeNote" style="font-size:0.72rem; margin-top:6px;"></div>
+      <div id="wellPumpNote" style="font-size:0.72rem; color:var(--primary-dark); background:var(--primary-light); padding:7px 10px; border-radius:8px; margin-top:8px;"></div>
+      <div id="meterCompareMiniNote" style="font-size:0.72rem; background:var(--box); border:1px solid var(--border); padding:7px 10px; border-radius:8px; margin-top:8px;"></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Kalkulator toplotnih izgub hiše v10.2 · ISO 13788, ISO 6946, PURES-3 · Deluje 100 % lokalno v brskalniku
+</footer>
+
+<script src="data.js"></script>
+<script src="calculations.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

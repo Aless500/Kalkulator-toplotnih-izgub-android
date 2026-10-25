@@ -1,0 +1,1103 @@
+{
+  "version": "10.2",
+  "darkMode": false,
+  "activeTab": "roofs",
+  "scenarioA": null,
+  "bomWastePct": 5,
+  "customMaterials": [],
+  "materialOverrides": {},
+  "rafterHelper": {
+    "widthCm": 10,
+    "spacingCm": 100
+  },
+  "boundary": {
+    "ti": 20,
+    "te": -13,
+    "phiI": 50,
+    "phiE": 80,
+    "heatedArea": 210,
+    "hours": 1900
+  },
+  "dhwAndWell": {
+    "dhwEnabled": false,
+    "dhwSourceMode": "main",
+    "mainHpDhwCop": 3.1,
+    "sanitaryHpCop": 2.8,
+    "persons": 4,
+    "litersPerPerson": 45,
+    "tempCold": 10,
+    "tempHot": 50,
+    "tankLossPct": 15,
+    "wellPumpAutoSync": false,
+    "hpThermalPowerKw": 8,
+    "hpMachineCop": 5.4,
+    "wellPumpWatts": 350,
+    "wellWaterDeltaT": 3.5,
+    "summerIndoorTemp": 25,
+    "summerIndoorRh": 60
+  },
+  "hpSettings": {
+    "selectedHpFuelId": "tc_voda",
+    "nominalThermalKw": 10,
+    "minModulationKw": 2.2,
+    "maxThermalKwAtPeak": 10,
+    "peakElMode": "manual",
+    "manualPeakElKw": 2.2,
+    "maxCompressorElKw": 2.2,
+    "copAtDesignTe": 4.3,
+    "auxPumpsWatts": 390,
+    "bivalentTemp": -20,
+    "backupHeaterKw": 0,
+    "fuseAmps": 20,
+    "baseHousePeakKw": 5
+  },
+  "meterData": {
+    "enabled": true,
+    "totalMeterKwh": 4880,
+    "vtKwh": 2247,
+    "mtKwh": 2633,
+    "measuredHpElKwh": 1985,
+    "measuredAcElKwh": 1031,
+    "measuredHouseholdKwh": 2085,
+    "annualBillEur": 871,
+    "monthlyTotalKwh": [
+      680,
+      560,
+      460,
+      340,
+      270,
+      290,
+      350,
+      340,
+      280,
+      350,
+      440,
+      520
+    ]
+  },
+  "solarAndGrid": {
+    "pvKwp": 10,
+    "specificYield": 950,
+    "simLoadSource": "model",
+    "batteryCapKwh": 15,
+    "batteryDodPct": 90,
+    "batteryEffPct": 90,
+    "directSelfConsPct": 38,
+    "exportMode": "zero",
+    "exportPriceEur": 0.055,
+    "gridImportPriceEur": 0.2,
+    "batteryInvestEur": 3000
+  },
+  "hydraulics": {
+    "floorDeltaT": 5
+  },
+  "fuels": [
+    {
+      "id": "tc_voda",
+      "name": "TČ voda–voda (s potopno črp.)",
+      "unit": "€/kWh",
+      "price": 0.2,
+      "eff": 4.37,
+      "energyPerUnit": 1,
+      "invest": 9500
+    },
+    {
+      "id": "tc_zrak",
+      "name": "TČ zrak–voda",
+      "unit": "€/kWh",
+      "price": 0.2,
+      "eff": 3.5,
+      "energyPerUnit": 1,
+      "invest": 8500
+    },
+    {
+      "id": "drva",
+      "name": "Drva (bukev, uplinjevalni)",
+      "unit": "€/prm",
+      "price": 95,
+      "eff": 0.85,
+      "energyPerUnit": 2100
+    },
+    {
+      "id": "peleti",
+      "name": "Lesni peleti (A1)",
+      "unit": "€/tono",
+      "price": 360,
+      "eff": 0.9,
+      "energyPerUnit": 4800,
+      "invest": 7800
+    },
+    {
+      "id": "plin",
+      "name": "Zemeljski plin",
+      "unit": "€/kWh",
+      "price": 0.095,
+      "eff": 0.96,
+      "energyPerUnit": 1,
+      "invest": 6500
+    },
+    {
+      "id": "olje",
+      "name": "Kurilno olje (ELKO)",
+      "unit": "€/liter",
+      "price": 1.5,
+      "eff": 0.92,
+      "energyPerUnit": 10
+    },
+    {
+      "id": "el_dir",
+      "name": "Direktna elektrika / IR",
+      "unit": "€/kWh",
+      "price": 0.2,
+      "eff": 1,
+      "energyPerUnit": 1,
+      "invest": 3500
+    }
+  ],
+  "walls": [
+    {
+      "id": "w1",
+      "name": "Zunanji zid - prizidek",
+      "area": 100,
+      "fx": 1,
+      "rsi": 0.13,
+      "rse": 0.04,
+      "targetU": 0.18,
+      "layers": [
+        {
+          "matId": "omet_notranji",
+          "name": "Notranji apneno-cementni omet",
+          "d": 1.5,
+          "lambda": 0.8,
+          "mu": 15,
+          "rho": 1600,
+          "c": 1000,
+          "woodPct": 0
+        },
+        {
+          "matId": "opeka_termo",
+          "name": "Termo brušena opeka (Porotherm Profi)",
+          "d": 29,
+          "lambda": 0.19,
+          "mu": 8,
+          "rho": 680,
+          "c": 1000,
+          "woodPct": 0
+        },
+        {
+          "matId": "eps_graf_70",
+          "name": "Grafitni EPS 70/80",
+          "d": 16,
+          "lambda": 0.031,
+          "mu": 30,
+          "rho": 16,
+          "c": 1450,
+          "woodPct": 0
+        },
+        {
+          "matId": "fasadno_lepilo",
+          "name": "Fasadno lepilo + mrežica",
+          "d": 0.4,
+          "lambda": 0.8,
+          "mu": 25,
+          "rho": 1500,
+          "c": 1000,
+          "woodPct": 0
+        },
+        {
+          "matId": "omet_fasadni",
+          "name": "Zaključni fasadni omet",
+          "d": 0.2,
+          "lambda": 0.7,
+          "mu": 40,
+          "rho": 1600,
+          "c": 1000,
+          "woodPct": 0
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "name": "Cokel / podzidek - prizidek",
+      "area": 25,
+      "fx": 1,
+      "rsi": 0.13,
+      "rse": 0.04,
+      "targetU": 0.25,
+      "layers": [
+        {
+          "matId": "ab_beton",
+          "name": "Armirani beton",
+          "d": 25,
+          "lambda": 2.1,
+          "mu": 100,
+          "rho": 2400,
+          "c": 1000,
+          "woodPct": 0
+        },
+        {
+          "matId": "xps_300",
+          "name": "XPS 300 / Stirodur",
+          "d": 16.01,
+          "lambda": 0.035,
+          "mu": 150,
+          "rho": 33,
+          "c": 1450,
+          "woodPct": 0
+        },
+        {
+          "matId": "fasadno_lepilo",
+          "name": "Fasadno lepilo + zaključni sloj",
+          "d": 0.5,
+          "lambda": 0.8,
+          "mu": 25,
+          "rho": 1500,
+          "c": 1000,
+          "woodPct": 0
+        }
+      ]
+    },
+    {
+      "id": "el_1792264082384",
+      "name": "Cokel / podzidek - stari del hiše spodaj",
+      "area": 45,
+      "fx": 0.5,
+      "rsi": 0.13,
+      "rse": 0.04,
+      "targetU": 0.25,
+      "layers": [
+        {
+          "matId": "ab_beton",
+          "name": "Armirani beton",
+          "d": 35.01,
+          "lambda": 2.1,
+          "mu": 100,
+          "rho": 2400,
+          "c": 1000,
+          "woodPct": 0
+        },
+        {
+          "matId": "bitumen",
+          "name": "Bitumenska hidroizolacija (Izotekt V4, 0.4cm)",
+          "d": 0.4,
+          "lambda": 0.23,
+          "mu": 50000,
+          "rho": 1100,
+          "c": 1000,
+          "woodPct": 0
+        },
+        {
+          "matId": "xps_300",
+          "name": "XPS 300 / Stirodur",
+          "d": 16.01,
+          "lambda": 0.035,
+          "mu": 150,
+          "rho": 33,
+          "c": 1450,
+          "woodPct": 0
+        },
+        {
+          "matId": "cepasta_folija",
+          "name": "Čepasta (gumbasta) folija za temelje",
+          "d": 0.8,
+          "lambda": 0.35,
+          "mu": 50000,
+          "rho": 950,
+          "c": 1800,
+          "woodPct": 0
+        },
+        {
+          "matId": "tampon",
+          "name": "Gramozni tampon / nasip (0-32 mm)",
+          "d": 50,
+          "lambda": 1.8,
+          "mu": 3,
+          "rho": 1900,
+          "c": 840,
+          "woodPct": 0
+        }
+      ]
+    },
+    {
+      "id": "el_1792264463671",
+      "name": "Zunanji zid - stari del hiše spodaj",
+      "area": 100,
+      "fx": 1,
+      "rsi": 0.13,
+      "rse": 0.04,
+      "targetU": 0.25,
+      "layers": [
+        {
+          "matId": "omet_notranji",
+          "name": "Notranji apneno-cementni omet",
+          "d": 1.5,
+          "lambda": 0.8,
+          "mu": 15,
+          "rho": 1600,
+          "c": 1000,
+          "woodPct": 0
+        },
+        {
+          "matId": "opeka_votla",
+          "name": "Votla opeka / modularni blok (29/19 cm)",
+          "d": 29.01,
+          "lambda": 0.48,
+          "mu": 8,
+          "rho": 900,
+          "c": 1000,
+          "woodPct": 0
+        },
+        {
+          "matId": "eps_graf_70",
+          "name": "Grafitni EPS 70/80 (fasadni stiropor)",
+          "d": 16.01,
+          "lambda": 0.031,
+          "mu": 30,
+          "rho": 16,
+          "c": 1450,
+          "woodPct": 0
+        },
+        {
+          "matId": "fasadno_lepilo",
+          "name": "Fasadno lepilo + mrežica (MultiWhite)",
+          "d": 0.4,
+          "lambda": 0.8,
+          "mu": 25,
+          "rho": 1500,
+          "c": 1000,
+          "woodPct": 0
+        },
+        {
+          "matId": "omet_fasadni",
+          "name": "Zaključni fasadni omet (silikon/akril)",
+          "d": 0.2,
+          "lambda": 0.7,
+          "mu": 40,
+          "rho": 1600,
+          "c": 1000,
+          "woodPct": 0
+        }
+      ]
+    },
+    {
+      "id": "el_1792262208291",
+      "name": "Zunanji zid - montažni del hiše zgoraj",
+      "area": 100,
+      "fx": 0.5,
+      "rsi": 0.13,
+      "rse": 0.04,
+      "targetU": 0.18,
+      "layers": [
+        {
+          "matId": "knauf",
+          "name": "Mavčnokartonska plošča (Knauf GKB)",
+          "d": 1.2,
+          "lambda": 0.25,
+          "mu": 8,
+          "rho": 800,
+          "c": 1050,
+          "woodPct": 0
+        },
+        {
+          "matId": "osb",
+          "name": "OSB 3 plošča",
+          "d": 2,
+          "lambda": 0.13,
+          "mu": 150,
+          "rho": 620,
+          "c": 1700,
+          "woodPct": 0
+        },
+        {
+          "matId": "parna_zapora_alu",
+          "name": "Alu parna zapora (d=0.02cm, Sd=100m)",
+          "d": 0.02,
+          "lambda": 0.33,
+          "mu": 500000,
+          "rho": 1100,
+          "c": 1500,
+          "woodPct": 0
+        },
+        {
+          "matId": "mw_fasada",
+          "name": "Kamena volna - fasadna plošča/lamela",
+          "d": 12.01,
+          "lambda": 0.04,
+          "mu": 1,
+          "rho": 110,
+          "c": 1030,
+          "woodPct": 10
+        },
+        {
+          "matId": "bitumen",
+          "name": "Bitumenska hidroizolacija (Izotekt V4, 0.4cm)",
+          "d": 0.4,
+          "lambda": 0.23,
+          "mu": 50000,
+          "rho": 1100,
+          "c": 1000,
+          "woodPct": 0
+        },
+        {
+          "matId": "zrak_mir",
+          "name": "Mirujoč (neprezračevan) zračni sloj",
+          "d": 2,
+          "lambda": 0.18,
+          "mu": 1,
+          "rho": 1.2,
+          "c": 1005,
+          "woodPct": 0
+        },
+        {
+          "matId": "eps_graf_70",
+          "name": "Grafitni EPS 70/80",
+          "d": 16.01,
+          "lambda": 0.031,
+          "mu": 30,
+          "rho": 16,
+          "c": 1450,
+          "woodPct": 0
+        },
+        {
+          "matId": "fasadno_lepilo",
+          "name": "Fasadno lepilo + mrežica (MultiWhite)",
+          "d": 0.4,
+          "lambda": 0.8,
+          "mu": 25,
+          "rho": 1500,
+          "c": 1000,
+          "woodPct": 0
+        },
+        {
+          "matId": "omet_fasadni",
+          "name": "Zaključni fasadni omet (silikon/akril)",
+          "d": 0.2,
+          "lambda": 0.7,
+          "mu": 40,
+          "rho": 1600,
+          "c": 1000,
+          "woodPct": 0
+        }
+      ],
+      "rafterTargetLayer": 2
+    }
+  ],
+  "roofs": [
+    {
+      "id": "r1",
+      "name": "Strop proti podstrešju - stari del hiše",
+      "area": 100,
+      "fx": 0.8,
+      "rsi": 0.1,
+      "rse": 0.04,
+      "targetU": 0.14,
+      "layers": [
+        {
+          "matId": "knauf",
+          "name": "Mavčnokartonska plošča (Knauf GKB)",
+          "d": 1.25,
+          "lambda": 0.25,
+          "mu": 8,
+          "rho": 800,
+          "c": 1050,
+          "woodPct": 0
+        },
+        {
+          "matId": "osb",
+          "name": "OSB 3 plošča",
+          "d": 2,
+          "lambda": 0.13,
+          "mu": 150,
+          "rho": 620,
+          "c": 1700,
+          "woodPct": 0
+        },
+        {
+          "matId": "parna_zapora_alu",
+          "name": "Alu parna zapora (d=0.02cm, Sd=100m)",
+          "d": 0.02,
+          "lambda": 0.33,
+          "mu": 500000,
+          "rho": 1100,
+          "c": 1500,
+          "woodPct": 0
+        },
+        {
+          "matId": "mw_streha",
+          "name": "Kamena volna - strešna (DP-5 / DP-8)",
+          "d": 10.01,
+          "lambda": 0.04,
+          "mu": 1,
+          "rho": 60,
+          "c": 1030,
+          "woodPct": 6.8
+        },
+        {
+          "matId": "parna_ovira",
+          "name": "Parna ovira za mansardo (d=0.05cm, Sd=5m)",
+          "d": 0.05,
+          "lambda": 0.33,
+          "mu": 10000,
+          "rho": 900,
+          "c": 1700,
+          "woodPct": 0
+        },
+        {
+          "matId": "gw_032",
+          "name": "Steklena volna 032 (visokoizolativna)",
+          "d": 0,
+          "lambda": 0.032,
+          "mu": 1,
+          "rho": 32,
+          "c": 1030,
+          "woodPct": 0
+        }
+      ],
+      "rafterTargetLayer": 3
+    },
+    {
+      "id": "el_1792265029898",
+      "name": "Strop proti podstrešju - stari del hiše (kopija)",
+      "area": 50,
+      "fx": 0.8,
+      "rsi": 0.1,
+      "rse": 0.04,
+      "targetU": 0.14,
+      "layers": [
+        {
+          "matId": "knauf",
+          "name": "Mavčnokartonska plošča (Knauf GKB)",
+          "d": 1.25,
+          "lambda": 0.25,
+          "mu": 8,
+          "rho": 800,
+          "c": 1050,
+          "woodPct": 0
+        },
+        {
+          "matId": "osb",
+          "name": "OSB 3 plošča",
+          "d": 1.5,
+          "lambda": 0.13,
+          "mu": 150,
+          "rho": 620,
+          "c": 1700,
+          "woodPct": 0
+        },
+        {
+          "matId": "parna_zapora",
+          "name": "Parna zapora PE folija (d=0.02cm, Sd=20m)",
+          "d": 0.02,
+          "lambda": 0.33,
+          "mu": 100000,
+          "rho": 950,
+          "c": 1800,
+          "woodPct": 0
+        },
+        {
+          "matId": "gw_032",
+          "name": "Steklena volna 032 (visokoizolativna)",
+          "d": 38.01,
+          "lambda": 0.032,
+          "mu": 1,
+          "rho": 32,
+          "c": 1030,
+          "woodPct": 0
+        },
+        {
+          "matId": "gw_032",
+          "name": "Steklena volna 032 (visokoizolativna)",
+          "d": 16,
+          "lambda": 0.032,
+          "mu": 1,
+          "rho": 32,
+          "c": 1030,
+          "woodPct": 10
+        },
+        {
+          "matId": "deske_opaz",
+          "name": "Lesene deske / strešni opaž (colarice)",
+          "d": 2.4,
+          "lambda": 0.13,
+          "mu": 35,
+          "rho": 480,
+          "c": 1600,
+          "woodPct": 0
+        },
+        {
+          "matId": "sek_kritina",
+          "name": "Paroprepustna sekundarna kritina (d=0.05cm, Sd=0.02m)",
+          "d": 0.05,
+          "lambda": 0.33,
+          "mu": 40,
+          "rho": 600,
+          "c": 1500,
+          "woodPct": 0
+        },
+        {
+          "matId": "zrak_prezr",
+          "name": "🌬️ Prezračevan zračni kanal pod streho (kontraletve / zračni most)",
+          "d": 5,
+          "lambda": 1,
+          "mu": 1,
+          "rho": 1.2,
+          "c": 1005,
+          "woodPct": 0
+        },
+        {
+          "matId": "krit_sendvic",
+          "name": "Sendvič strešni panel (trapez + PUR polnilo)",
+          "d": 4,
+          "lambda": 0.024,
+          "mu": 10000,
+          "rho": 45,
+          "c": 1400,
+          "woodPct": 0
+        }
+      ],
+      "rafterTargetLayer": 4
+    }
+  ],
+  "floors": [
+    {
+      "id": "f1",
+      "name": "Tla spodaj",
+      "area": 150,
+      "fx": 0.5,
+      "rsi": 0.17,
+      "rse": 0,
+      "targetU": 0.25,
+      "layers": [
+        {
+          "matId": "vinil",
+          "name": "Vinilna obloga (LVT)",
+          "d": 0.5,
+          "lambda": 0.23,
+          "mu": 5000,
+          "rho": 1400,
+          "c": 1200,
+          "woodPct": 0
+        },
+        {
+          "matId": "estrih_cem",
+          "name": "Cementni estrih",
+          "d": 6,
+          "lambda": 1.4,
+          "mu": 30,
+          "rho": 2000,
+          "c": 1000,
+          "woodPct": 0
+        },
+        {
+          "matId": "parna_zapora",
+          "name": "Parna zapora PE folija (d=0.02cm, Sd=20m)",
+          "d": 0.02,
+          "lambda": 0.33,
+          "mu": 100000,
+          "rho": 950,
+          "c": 1800,
+          "woodPct": 0
+        },
+        {
+          "matId": "eps_100",
+          "name": "Talni EPS 100",
+          "d": 20,
+          "lambda": 0.032,
+          "mu": 40,
+          "rho": 20,
+          "c": 1450,
+          "woodPct": 0
+        },
+        {
+          "matId": "parna_zapora",
+          "name": "Parna zapora PE folija (d=0.02cm, Sd=20m)",
+          "d": 0.02,
+          "lambda": 0.33,
+          "mu": 100000,
+          "rho": 950,
+          "c": 1800,
+          "woodPct": 0
+        },
+        {
+          "matId": "bitumen",
+          "name": "Bitumenska hidroizolacija V4",
+          "d": 0.4,
+          "lambda": 0.23,
+          "mu": 50000,
+          "rho": 1100,
+          "c": 1000,
+          "woodPct": 0
+        },
+        {
+          "matId": "ab_beton",
+          "name": "Temeljna AB plošča",
+          "d": 40,
+          "lambda": 2.1,
+          "mu": 100,
+          "rho": 2400,
+          "c": 1000,
+          "woodPct": 0
+        },
+        {
+          "matId": "tampon",
+          "name": "Gramozni tampon / nasip (0-32 mm)",
+          "d": 10,
+          "lambda": 1.8,
+          "mu": 3,
+          "rho": 1900,
+          "c": 840,
+          "woodPct": 0
+        }
+      ]
+    }
+  ],
+  "windows": [
+    {
+      "id": "win1",
+      "name": "Jedilnica",
+      "w": 1.19,
+      "h": 1.14,
+      "count": 1,
+      "uw": 0.75,
+      "g": 0.5,
+      "orient": "V_Z",
+      "fx": 1
+    },
+    {
+      "id": "win2",
+      "name": "Okno balkon - stara dnevna",
+      "w": 1.9,
+      "h": 1.076,
+      "count": 1,
+      "uw": 0.75,
+      "g": 0.5,
+      "orient": "V_Z",
+      "fx": 1
+    },
+    {
+      "id": "win3",
+      "name": "Okno ",
+      "w": 1.2,
+      "h": 0.976,
+      "count": 2,
+      "uw": 0.75,
+      "g": 0.5,
+      "orient": "J",
+      "fx": 1
+    },
+    {
+      "id": "win4",
+      "name": "Vetrolov",
+      "w": 0.8,
+      "h": 1.249,
+      "count": 1,
+      "uw": 0.75,
+      "g": 0.5,
+      "orient": "J",
+      "fx": 1
+    },
+    {
+      "id": "w_1792345624927",
+      "name": "Kurilnica",
+      "w": 1.19,
+      "h": 0.76,
+      "count": 1,
+      "uw": 0.75,
+      "g": 0.5,
+      "orient": "V_Z",
+      "fx": 1
+    },
+    {
+      "id": "w_1792345726580",
+      "name": "Stopnišče",
+      "w": 1.06,
+      "h": 1.27,
+      "count": 1,
+      "uw": 0.75,
+      "g": 0.5,
+      "orient": "J",
+      "fx": 1
+    },
+    {
+      "id": "w_1792345740889",
+      "name": "Kuhinja",
+      "w": 1.19,
+      "h": 1.14,
+      "count": 1,
+      "uw": 0.75,
+      "g": 0.5,
+      "orient": "S",
+      "fx": 1
+    },
+    {
+      "id": "w_1792345883089",
+      "name": "Garaža",
+      "w": 1.16,
+      "h": 1.12,
+      "count": 1,
+      "uw": 0.75,
+      "g": 0.5,
+      "orient": "S",
+      "fx": 1
+    },
+    {
+      "id": "w_1792345944521",
+      "name": "Okno balkon nad vhodom",
+      "w": 1.1,
+      "h": 0.976,
+      "count": 1,
+      "uw": 0.75,
+      "g": 0.5,
+      "orient": "V_Z",
+      "fx": 1
+    },
+    {
+      "id": "w_1792346077504",
+      "name": "Soba za goste",
+      "w": 1.06,
+      "h": 1.27,
+      "count": 1,
+      "uw": 0.75,
+      "g": 0.5,
+      "orient": "J",
+      "fx": 1
+    },
+    {
+      "id": "w_1792346132994",
+      "name": "Panoramska okna dnevna soba",
+      "w": 2.47,
+      "h": 2.064,
+      "count": 2,
+      "uw": 0.75,
+      "g": 0.5,
+      "orient": "V_Z",
+      "fx": 1
+    },
+    {
+      "id": "w_1792346214929",
+      "name": "Panoramska okna otroške sobe zgoraj",
+      "w": 2.47,
+      "h": 1.166,
+      "count": 2,
+      "uw": 0.75,
+      "g": 0.5,
+      "orient": "V_Z",
+      "fx": 1
+    },
+    {
+      "id": "w_1792346262614",
+      "name": "Soba zgoraj - stara jedilnica",
+      "w": 1.06,
+      "h": 1.27,
+      "count": 1,
+      "uw": 0.75,
+      "g": 0.5,
+      "orient": "S",
+      "fx": 1
+    }
+  ],
+  "doors": [
+    {
+      "id": "d1",
+      "name": "Glavna vhodna vrata (izolirana)",
+      "area": 2.2,
+      "ud": 0.79,
+      "fx": 1
+    },
+    {
+      "id": "d2",
+      "name": "Podstrešne stopnice Minka Polar Extreme (114x70)",
+      "area": 0.8,
+      "ud": 0.59,
+      "fx": 0.8
+    },
+    {
+      "id": "d_1792265711713",
+      "name": "Garažna vrata",
+      "area": 5.5,
+      "ud": 1,
+      "fx": 1
+    }
+  ],
+  "bridges": {
+    "useFlatRate": false,
+    "flatDeltaU": 0.05,
+    "items": [
+      {
+        "id": "tb1",
+        "name": "Stik zunanji zid – temelj / cokel",
+        "length": 42,
+        "psi": 0.15,
+        "fx": 1
+      },
+      {
+        "id": "tb2",
+        "name": "Špalete in preklade okoli oken",
+        "length": 58,
+        "psi": 0.08,
+        "fx": 1
+      },
+      {
+        "id": "tb3",
+        "name": "Stik streha – zunanji zid (venec)",
+        "length": 42,
+        "psi": 0.12,
+        "fx": 1
+      }
+    ],
+    "enabled": false
+  },
+  "ventilation": {
+    "enabled": false,
+    "volumeArea": 200,
+    "ceilingHeight": 2.55,
+    "airChanges": 0.4,
+    "heatRecoveryEff": 90
+  },
+  "rooms": [
+    {
+      "id": "rm1",
+      "name": "Dnevna soba",
+      "area": 40,
+      "ti": 22,
+      "expFactor": 1.15,
+      "spacing": 10
+    },
+    {
+      "id": "rm2",
+      "name": "Jedilnica",
+      "area": 15,
+      "ti": 22,
+      "expFactor": 1,
+      "spacing": 10
+    },
+    {
+      "id": "rm3",
+      "name": "Kuhinja",
+      "area": 10.5,
+      "ti": 22,
+      "expFactor": 1,
+      "spacing": 10
+    },
+    {
+      "id": "rm4",
+      "name": "WC (spodaj)",
+      "area": 2,
+      "ti": 22,
+      "expFactor": 0.8,
+      "spacing": 10
+    },
+    {
+      "id": "rm5",
+      "name": "Kopalnica (spodaj)",
+      "area": 9,
+      "ti": 24,
+      "expFactor": 1.15,
+      "spacing": 10
+    },
+    {
+      "id": "rm6",
+      "name": "Hodnik (spodaj)",
+      "area": 10,
+      "ti": 22,
+      "expFactor": 0.8,
+      "spacing": 10
+    },
+    {
+      "id": "rm_1792422099875",
+      "name": "Otroška soba Lea",
+      "area": 19,
+      "ti": 22,
+      "expFactor": 1.15,
+      "spacing": 10
+    },
+    {
+      "id": "rm_1792423067054",
+      "name": "Otroška soba Lana",
+      "area": 19,
+      "ti": 22,
+      "expFactor": 1.15,
+      "spacing": 10
+    },
+    {
+      "id": "rm_1792423171348",
+      "name": "Pisarna",
+      "area": 6,
+      "ti": 22,
+      "expFactor": 1,
+      "spacing": 15
+    },
+    {
+      "id": "rm_1792423200838",
+      "name": "Soba zgoraj (stara dnevna)",
+      "area": 21,
+      "ti": 22,
+      "expFactor": 1,
+      "spacing": 15
+    },
+    {
+      "id": "rm_1792423261217",
+      "name": "Soba za goste",
+      "area": 12,
+      "ti": 22,
+      "expFactor": 1,
+      "spacing": 15
+    },
+    {
+      "id": "rm_1792423313855",
+      "name": "Kopalnica (zgoraj)",
+      "area": 5,
+      "ti": 24,
+      "expFactor": 1.15,
+      "spacing": 10
+    },
+    {
+      "id": "rm_1792423354506",
+      "name": "Spalnica",
+      "area": 28,
+      "ti": 22,
+      "expFactor": 1.1,
+      "spacing": 15
+    },
+    {
+      "id": "rm_1792423400996",
+      "name": "Hodnik (zgoraj)",
+      "area": 7,
+      "ti": 22,
+      "expFactor": 0.8,
+      "spacing": 15
+    }
+  ],
+  "roi": {
+    "selectedFuelId": "tc_voda",
+    "measures": [
+      {
+        "id": "m1",
+        "name": "Fasada 16 cm grafitni EPS 0.031 (300 m²)",
+        "area": 300,
+        "uBefore": 1.15,
+        "uAfter": 0.17,
+        "invest": 10000,
+        "subsidy": 0
+      },
+      {
+        "id": "m2",
+        "name": "Izolacija poševne strehe / mansarde (30 cm volna)",
+        "area": 115,
+        "uBefore": 0.65,
+        "uAfter": 0.13,
+        "invest": 3000,
+        "subsidy": 0
+      },
+      {
+        "id": "m3",
+        "name": "Menjava starih oken za troslojna PVC (Uw=0.85)",
+        "area": 25,
+        "uBefore": 2.4,
+        "uAfter": 0.85,
+        "invest": 10000,
+        "subsidy": 0
+      }
+    ]
+  }
+}

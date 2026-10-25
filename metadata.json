@@ -1,0 +1,6 @@
+{
+  "name": "Toplotne izgube",
+  "description": "Inženirski kalkulator toplotnih izgub, rosišča in ogrevanja po standardih ISO 13788, ISO 6946 in PURES-3.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
